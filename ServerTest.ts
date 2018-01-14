@@ -12,8 +12,8 @@ namespace ServerTest {
     // Port vom Process-Objekt erfragen 
     let port: number = process.env.PORT;
     // Port nicht definiert -> lokale Maschine, Port selbst definieren
-    if (port == undefined)
-        port = 8100;
+//    if (port == undefined)
+//        port = 8100;
     
     // Server-Objekt kreieren
     let server: Http.Server = Http.createServer();
@@ -23,21 +23,21 @@ namespace ServerTest {
     // Auf dem Port horchen
     server.listen(port);
 
-    // Listening-Event: R√ºckmeldung wenn horchen l√§uft
+    // Listening-Event: R¸ckmeldung wenn horchen l‰uft
     function handleListen(): void {
         console.log("Server listening on port " + port);
     }
 
     // Request-Event: Verarbeiten der Request und erstellen der Response
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
-        console.log("Ich h√∂re Stimmen!!");
+        console.log("Hey");
         // Header: Antwort kommt im HTML-Format mit uft-8
         _response.setHeader("content-type", "text/html; charset=utf-8");
         // Header: ?
         _response.setHeader("Access-Control-Allow-Origin", "*");
         
         // Response-Body
-        _response.write("Ich h√∂re Stimmen!!<br>");
+        _response.write("Ich hˆre Stimmen!!<br>");
         _response.write("Port: " + port + "<br>");
         _response.write("Method: " + _request.method + "<br>");
         _response.write("Url: " + _request.url + "<br>");
@@ -49,7 +49,7 @@ namespace ServerTest {
         for (let key in query)
             console.log(key + ": " + query[key]);
         
-        // Antwort abschlie√üen und abschicken
+        // Antwort abschlieﬂen und abschicken
         _response.end();
     }
 }
